@@ -24,22 +24,52 @@ void DatabaseHandler::createTable(const string& tableName) {
     string sql = "CREATE TABLE IF NOT EXISTS " + tableName + " ("
         "ID INTEGER PRIMARY KEY AUTOINCREMENT, "
         "TEMPERATURE REAL, "
-        "HUMIDITY REAL, "
+        "FEELS_LIKE REAL, "
+        "TEMP_MIN REAL, "
+        "TEMP_MAX REAL, "
         "PRESSURE REAL, "
+        "HUMIDITY REAL, "
+        "SEA_LEVEL REAL, "
+        "GROUND_LEVEL REAL, "
+        "VISIBILITY REAL, "
         "WIND_SPEED REAL, "
         "WIND_DIRECTION REAL, "
+        "CLOUDINESS REAL, "
+        "WEATHER_MAIN TEXT, "
+        "WEATHER_DESCRIPTION TEXT, "
+        "WEATHER_ICON TEXT, "
+        "SUNRISE INTEGER, "
+        "SUNSET INTEGER, "
         "CITY_NAME TEXT, "
+        "COUNTRY TEXT, "
+        "LATITUDE REAL, "
+        "LONGITUDE REAL, "
         "TIMESTAMP DATETIME DEFAULT CURRENT_TIMESTAMP);";
     executeSQL(sql);
 }
 
-void DatabaseHandler::logData(double temperature, double humidity, double pressure, double windSpeed, double windDirection, const string& tableName, const string& cityName) {
-    string sql = "INSERT INTO " + tableName + " (TEMPERATURE, HUMIDITY, PRESSURE, WIND_SPEED, WIND_DIRECTION, CITY_NAME) "
-        "VALUES (" + to_string(temperature) + ", " + to_string(humidity) + ", "
-        + to_string(pressure) + ", " + to_string(windSpeed) + ", " + to_string(windDirection) + ", '"
-        + cityName + "');";
+
+void DatabaseHandler::logData(
+    double temperature, double feelsLike, double tempMin, double tempMax,
+    double pressure, double humidity, double seaLevel, double groundLevel,
+    double visibility, double windSpeed, double windDirection, double cloudiness,
+    const string& weatherMain, const string& weatherDescription, const string& weatherIcon,
+    int sunrise, int sunset, const string& cityName, const string& country,
+    double latitude, double longitude, const string& tableName)
+{
+    string sql = "INSERT INTO " + tableName + " ("
+        "TEMPERATURE, FEELS_LIKE, TEMP_MIN, TEMP_MAX, PRESSURE, HUMIDITY, SEA_LEVEL, GROUND_LEVEL, "
+        "VISIBILITY, WIND_SPEED, WIND_DIRECTION, CLOUDINESS, WEATHER_MAIN, WEATHER_DESCRIPTION, WEATHER_ICON, "
+        "SUNRISE, SUNSET, CITY_NAME, COUNTRY, LATITUDE, LONGITUDE) VALUES ("
+        + to_string(temperature) + ", " + to_string(feelsLike) + ", " + to_string(tempMin) + ", " + to_string(tempMax) + ", "
+        + to_string(pressure) + ", " + to_string(humidity) + ", " + to_string(seaLevel) + ", " + to_string(groundLevel) + ", "
+        + to_string(visibility) + ", " + to_string(windSpeed) + ", " + to_string(windDirection) + ", " + to_string(cloudiness) + ", '"
+        + weatherMain + "', '" + weatherDescription + "', '" + weatherIcon + "', "
+        + to_string(sunrise) + ", " + to_string(sunset) + ", '" + cityName + "', '" + country + "', "
+        + to_string(latitude) + ", " + to_string(longitude) + ");";
     executeSQL(sql);
 }
+
 
 vector<string> DatabaseHandler::getAllTables() {
     vector<string> tables;
@@ -139,6 +169,7 @@ double DatabaseHandler::calculateAverageData(const string& tableName, const stri
     sqlite3_finalize(stmt);
     return averageData;
 }
+
 
 
 

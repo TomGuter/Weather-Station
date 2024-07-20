@@ -14,7 +14,13 @@ public:
     DatabaseHandler(const string& dbName);
     ~DatabaseHandler();
 
-    virtual void logData(double temperature, double humidity, double pressure, double windSpeed, double windDirection, const string& tableName, const string& cityName) override;
+    virtual void logData(
+        double temperature, double feelsLike, double tempMin, double tempMax,
+        double pressure, double humidity, double seaLevel, double groundLevel,
+        double visibility, double windSpeed, double windDirection, double cloudiness,
+        const string& weatherMain, const string& weatherDescription, const string& weatherIcon,
+        int sunrise, int sunset, const string& cityName, const string& country,
+        double latitude, double longitude, const string& tableName) override;
     void createTable(const string& tableName);
     void deleteTable(const string& tableName);
     void renameTable(const string& oldName, const string& newName);
@@ -23,7 +29,6 @@ public:
     vector<vector<string>> getTableData(const string& tableName);
     vector<string> getAllTables();
     double calculateAverageData(const string& tableName, const string& columnName);
-
     string selectTable();
 
 private:

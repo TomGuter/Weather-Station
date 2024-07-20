@@ -45,7 +45,7 @@ void UserInterface::ApplicationControl(const string& apiKey_openWeather, const s
             }
 
             cout << "Choose simulation type:" << endl;
-            cout << "1. Random Data" << endl;
+            cout << "1. Random Data For Practice (without logging data to the database...)" << endl;
             cout << "2. Specific Latitude and Longitude" << endl;
             cout << "3. Specific Country and City" << endl;
             cout << "Enter your choice: " << endl;
@@ -111,11 +111,24 @@ void UserInterface::ApplicationControl(const string& apiKey_openWeather, const s
             }
             else if (simChoice == 3) {
                 cout << "Enter country: ";
-                cin >> country;
+                // (doesn't work with cout, so i need to use cin.ignore() and getline
+                
+                cin.ignore(); // clear the input buffer 
+                getline(cin, country); // use getline to handle multi-word input
+                country = replaceSpacesWithHyphens(country);
+
                 cout << "Enter city name: ";
-                cin >> city;
+                getline(cin, city); // use getline to handle multi-word input
+                city = replaceSpacesWithHyphens(city);
+
                 cout << "Enter logging time in seconds: ";
                 cin >> sleep;
+                while (sleep <= 0) {
+                    cout << "Sleep must be a number greater than 0... " << endl;;
+                    cout << "Enter logging time in seconds: ";
+                    cin >> sleep;
+                }
+
 
                 json coordinates = getApiData(apiKey_openCageData, city, country, 2);
 
@@ -163,18 +176,29 @@ void UserInterface::ApplicationControl(const string& apiKey_openWeather, const s
 
                 // display column headers
                 const vector<string>& headers = dbHandler.getColumnNames(selectedTable);
-                for (const string& header : headers) {
-                    cout << header << "\t";
-                }
-                cout << endl;
-
-                // Display data rows
                 for (const auto& row : data) {
-                    for (const string& value : row) {
-                        cout << value << "\t";
+                    for (size_t i = 0; i < headers.size(); ++i) {
+                        cout << headers[i] << ": " << row[i];
+                        if (i < headers.size() - 1) {
+                            cout << ", ";
+                        }
                     }
                     cout << endl;
+                    cout << "_________________________________________________________" << endl;
+                    cout << endl;
                 }
+                //for (const string& header : headers) {
+                //    cout << header << "\t";
+                //}
+                //cout << endl;
+
+                //// Display data rows
+                //for (const auto& row : data) {
+                //    for (const string& value : row) {
+                //        cout << value << "\t";
+                //    }
+                //    cout << endl;
+                //}
             }
 
             break;

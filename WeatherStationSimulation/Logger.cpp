@@ -11,7 +11,13 @@ Logger::Logger(const string& logFileName) : logFileName(logFileName) {}
 
 Logger::~Logger() {}
 
-void Logger::logData(double temperature, double humidity, double pressure, double windSpeed, double windDirection, const string& tableName, const string& cityName) {
+void Logger::logData(
+    double temperature, double feelsLike, double tempMin, double tempMax,
+    double pressure, double humidity, double seaLevel, double groundLevel,
+    double visibility, double windSpeed, double windDirection, double cloudiness,
+    const string& weatherMain, const string& weatherDescription, const string& weatherIcon,
+    int sunrise, int sunset, const string& cityName, const string& country,
+    double latitude, double longitude, const string& tableName) {
     ofstream logFile(logFileName, ios_base::app);
     if (logFile.is_open()) {
         auto now = chrono::system_clock::now();

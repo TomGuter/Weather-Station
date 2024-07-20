@@ -59,12 +59,19 @@ Select a table and provide a file path to save the CSV file. Ensure the path is 
 Calculate averages:
 Select a table and a numerical column to calculate the average value.
 
-Code Structure
-main.cpp: Entry point of the application.
-DatabaseHandler.h/.cpp: Handles database operations.
-Logger.h/.cpp: Handles logging operations.
-WeatherStationAPI.h/.cpp: Interacts with the OpenWeatherMap and Opencage APIs.
-UserInterface.h/.cpp: Manages user interactions and the application menu.
-DataHandlerAbstract.h: Abstract base class for data handlers.
-DataSetting.h/.cpp: Set the Database file name.
-WeatherStationFunctions.h/cpp: A list of functions that UserInterface can use.
+Code Structure:
+1. main.cpp: Entry point of the application.
+2.DatabaseHandler.h/.cpp: Handles database operations.
+3.Logger.h/.cpp: Handles logging operations.
+4.WeatherStationAPI.h/.cpp: Interacts with the OpenWeatherMap and Opencage APIs.
+5.UserInterface.h/.cpp: Manages user interactions and the application menu.
+6.DataHandlerAbstract.h: Abstract base class for data handlers.
+7. DataSetting.h/.cpp: Set the Database file name.
+8. WeatherStationFunctions.h/cpp: A list of functions that UserInterface can use.
+
+
+
+
+
+
+

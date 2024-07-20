@@ -1,9 +1,6 @@
 ﻿#include "WeatherStationFunctions.h"
-#include <iostream>
-#include <thread>
-#include <chrono>
-#include <cstdlib>
-#include <ctime>
+
+
 
 using namespace std;
 
@@ -18,27 +15,28 @@ void displayMenu() {
     cout << "5. Display All Tables" << endl;
     cout << "6. Rename Table" << endl;
     cout << "7. Calculate Average For Data" << endl;  // New option
-    cout << "8. Press 0 To Exit" << endl;
+    cout << "8. Export A Table" << endl;
+    cout << "9. Press 0 To Exit" << endl;
     cout << "Enter your choice: ";
-    
+
 }
 
 
-void simulateRandomWeatherData(DatabaseHandler& dbHandler, Logger& logger, const string& selectedTable) 
+void simulateRandomWeatherData(DatabaseHandler& dbHandler, Logger& logger, const string& selectedTable)
 {
-        double temperature = readTemperature();
-        double humidity = readHumidity();
-        double pressure = readPressure();
-        double windSpeed = (rand() % 200) / 10.0; 
-        double windDirection = rand() % 360; 
+    double temperature = readTemperature();
+    double humidity = readHumidity();
+    double pressure = readPressure();
+    double windSpeed = (rand() % 200) / 10.0;
+    double windDirection = rand() % 360;
 
-        cout << "Temperature: " << temperature << "C" << endl;
-        cout << "Humidity: " << humidity << "%" << endl;
-        cout << "Pressure: " << pressure << " hPa" << endl;
-        cout << "Wind Speed: " << windSpeed << " m/s" << endl;
-        cout << "Wind Direction: " << windDirection << "deg" << endl;
-        cout << "----------------------------" << endl;
-        //printWeatherData(selectedTable, temperature, humidity, pressure, windSpeed, windDirection, dbHandler, logger, selectedTable);
+    cout << "Temperature: " << temperature << "C" << endl;
+    cout << "Humidity: " << humidity << "%" << endl;
+    cout << "Pressure: " << pressure << " hPa" << endl;
+    cout << "Wind Speed: " << windSpeed << " m/s" << endl;
+    cout << "Wind Direction: " << windDirection << "deg" << endl;
+    cout << "----------------------------" << endl;
+    //printWeatherData(selectedTable, temperature, humidity, pressure, windSpeed, windDirection, dbHandler, logger, selectedTable);
 
 }
 
@@ -47,6 +45,8 @@ string replaceSpacesWithHyphens(const string& input) {
     replace(modifiedInput.begin(), modifiedInput.end(), ' ', '-');
     return modifiedInput;
 }
+
+
 
 
 void printWeatherData(
@@ -115,6 +115,35 @@ void ApiDataResult(const json& weatherData, DatabaseHandler& dbHandler, Logger& 
         dbHandler, logger, selectedTable);
 }
 
+wstring getSaveFileName()
+{
+    OPENFILENAMEW ofn;
+    wchar_t szFile[260] = { 0 };
+    ZeroMemory(&ofn, sizeof(ofn));
+    ofn.lStructSize = sizeof(ofn);
+    ofn.hwndOwner = nullptr;
+    ofn.lpstrFile = szFile;
+    ofn.nMaxFile = sizeof(szFile) / sizeof(szFile[0]);
+    ofn.lpstrFilter = L"CSV Files\0*.csv\0All Files\0*.*\0";
+    ofn.nFilterIndex = 1;
+    ofn.lpstrFileTitle = nullptr;
+    ofn.nMaxFileTitle = 0;
+    ofn.lpstrInitialDir = nullptr;
+    ofn.Flags = OFN_PATHMUSTEXIST | OFN_FILEMUSTEXIST | OFN_OVERWRITEPROMPT;
+
+    if (GetSaveFileNameW(&ofn)) {
+        wstring fileName = ofn.lpstrFile;
+        if (fileName.find(L".csv") == wstring::npos) {
+            fileName.append(L".csv");
+        }
+        return fileName;
+    }
+    else {
+        return L"";
+    }
+
+}
+
 
 
 bool isValidLatitude(double latitude) {
@@ -124,6 +153,7 @@ bool isValidLatitude(double latitude) {
 bool isValidLongitude(double longitude) {
     return longitude >= -180.0 && longitude <= 180.0;
 }
+
 
 
 

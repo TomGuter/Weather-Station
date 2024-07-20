@@ -1,8 +1,7 @@
 #pragma once
-
-
 #include "DataHandlerAbstract.h"
 #include <string>
+
 
 using namespace std;
 

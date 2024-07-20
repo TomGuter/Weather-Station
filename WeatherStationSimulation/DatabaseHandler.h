@@ -5,6 +5,9 @@
 #include <vector>
 #include "DataHandlerAbstract.h"
 #include <sqlite3.h>
+#include <windows.h>  
+#include <commdlg.h>
+#include <string>
 
 
 using namespace std;
@@ -30,6 +33,8 @@ public:
     vector<string> getAllTables();
     double calculateAverageData(const string& tableName, const string& columnName);
     string selectTable();
+    void exportTableToCSV(const string& tableName);
+
 
 private:
     sqlite3* db;

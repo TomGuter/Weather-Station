@@ -1,4 +1,4 @@
-#define _CRT_SECURE_NO_WARNINGS
+ï»¿#define _CRT_SECURE_NO_WARNINGS
 #include "Logger.h"
 #include <fstream>
 #include <iostream>
@@ -24,11 +24,11 @@ void Logger::logData(
         auto in_time_t = chrono::system_clock::to_time_t(now);
         logFile << put_time(localtime(&in_time_t), "%Y-%m-%d %X") << " - "
             << "City: " << cityName << ", "
-            << "Temperature: " << temperature << "°C, "
+            << "Temperature: " << temperature << "ï¿½C, "
             << "Humidity: " << humidity << "%, "
             << "Pressure: " << pressure << " hPa, "
             << "Wind Speed: " << windSpeed << " m/s, "
-            << "Wind Direction: " << windDirection << "°" << endl;
+            << "Wind Direction: " << windDirection << "ï¿½" << endl;
         logFile.close();
     }
     else {

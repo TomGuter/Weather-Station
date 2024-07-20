@@ -1,6 +1,17 @@
 #include "DatabaseHandler.h"
 #include "Logger.h"
 #include <atomic>
+#include <iostream>
+#include <thread>
+#include <chrono>
+#include <cstdlib>
+#include <ctime>
+#include <iomanip>
+#include "DataHandlerAbstract.h"
+#include "WeatherStationFunctions.h"
+#include <curl/curl.h>
+#include <nlohmann/json.hpp>
+#include "WeatherStationAPI.h"
 
 
 using namespace std;

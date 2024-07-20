@@ -1,6 +1,5 @@
 #include "WeatherStationAPI.h"
-#include <iostream>
-#include <curl/curl.h>
+
 
 using namespace std;
 

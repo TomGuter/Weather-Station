@@ -1,11 +1,21 @@
 #pragma once
-
 #include <iostream>
 #include <cstdlib>
 #include <atomic>
 #include "DatabaseHandler.h"
 #include "Logger.h"
 #include <nlohmann/json.hpp>
+#include <windows.h>  
+#include <commdlg.h>
+#include <string>
+#include <thread>
+#include <chrono>
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+#include <minwinbase.h>
+#include <windows.h>
+#include <commdlg.h>
 
 using namespace std;
 using json = nlohmann::json;
@@ -27,3 +37,6 @@ void ApiDataResult(const json& weatherData, DatabaseHandler& dbHandler, Logger& 
 bool isValidLatitude(double latitude);
 bool isValidLongitude(double longitude);
 string replaceSpacesWithHyphens(const string& input);
+wstring getSaveFileName();
+
+

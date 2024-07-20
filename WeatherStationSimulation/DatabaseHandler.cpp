@@ -2,6 +2,14 @@
 #include <iostream>
 #include <vector>
 
+
+#include <windows.h>
+#include <commdlg.h>
+#include <fstream>
+#include <iostream>
+#include "WeatherStationFunctions.h"
+
+
 using namespace std;
 
 
@@ -71,7 +79,7 @@ void DatabaseHandler::logData(
 }
 
 
-vector<string> DatabaseHandler::getAllTables() { 
+vector<string> DatabaseHandler::getAllTables() {
     vector<string> tables;
     string sql = "SELECT name FROM sqlite_master WHERE type='table';";
     sqlite3_stmt* stmt;
@@ -154,7 +162,7 @@ vector<vector<string>> DatabaseHandler::getTableData(const string& tableName)
 
 }
 
-double DatabaseHandler::calculateAverageData(const string& tableName, const string& columnName) 
+double DatabaseHandler::calculateAverageData(const string& tableName, const string& columnName)
 {
     string sql = "SELECT AVG(" + columnName + ") FROM " + tableName + ";";
     sqlite3_stmt* stmt;
@@ -179,19 +187,19 @@ void DatabaseHandler::deleteTable(const string& tableName) {
 }
 
 void DatabaseHandler::renameTable(const string& oldName, const string& newName) {
-    // Check if table names are valid
+    // check if table names are valid
     if (oldName.empty() || newName.empty() || oldName == newName) {
         cerr << "Invalid table names provided." << endl;
         return;
     }
 
-    // Check if the old table exists
+    // check if the old table exists
     if (!tableExists(oldName)) {
         cerr << "Table " << oldName << " does not exist." << endl;
         return;
     }
 
-    // Create the SQL query to rename the table
+    // create the SQL query to rename the table
     string query = "ALTER TABLE \"" + oldName + "\" RENAME TO \"" + newName + "\";";
 
     char* errorMessage = nullptr;
@@ -235,8 +243,45 @@ string DatabaseHandler::selectTable() {
         return selectedTable;
     }
 
-    
+
 }
+
+
+void DatabaseHandler::exportTableToCSV(const string& tableName) {
+    wstring savePath = getSaveFileName();
+    if (savePath.empty()) {
+        wcout << L"No file selected." << endl;
+        return;
+    }
+
+    ofstream outFile(savePath);
+    if (!outFile) {
+        wcerr << L"Error opening file for writing: " << savePath << endl;
+        return;
+    }
+
+    vector<string> columnNames = getColumnNames(tableName);
+    vector<vector<string>> data = getTableData(tableName);
+
+    // write the column names to the file
+    for (const auto& columnName : columnNames) {
+        outFile << columnName << ",";
+    }
+    outFile << "\n";
+
+    // write the data to the file
+    for (const auto& row : data) {
+        for (const auto& value : row) {
+            outFile << value << ",";
+        }
+        outFile << "\n";
+    }
+
+    outFile.close();
+    std::wcout << L"Data exported to " << savePath << std::endl;
+}
+
+
 
 
 
@@ -247,3 +292,5 @@ void DatabaseHandler::executeSQL(const string& sql) {
         sqlite3_free(errMsg);
     }
 }
+
+

@@ -114,7 +114,7 @@ void UserInterface::ApplicationControl(const string& apiKey_openWeather, const s
             else if (simChoice == 3) {
                 cout << "Enter country: ";
                 // (doesn't work with cout, so i need to use cin.ignore() and getline
-                
+
                 cin.ignore(); // clear the input buffer 
                 getline(cin, country); // use getline to handle multi-word input
                 country = replaceSpacesWithHyphens(country);
@@ -226,7 +226,7 @@ void UserInterface::ApplicationControl(const string& apiKey_openWeather, const s
             }
             break;
         }
-        case '6': { 
+        case '6': {
             // rename a table
             string oldTableName, newTableName;
             cout << "Enter the name of the table to rename: ";
@@ -268,6 +268,17 @@ void UserInterface::ApplicationControl(const string& apiKey_openWeather, const s
 
             break;
         }
+        case '8': {
+            string selectedTable = dbHandler.selectTable();
+            if (selectedTable.empty()) {
+                cout << "No valid table selected. Please select a valid table." << endl;
+                break;
+            }
+
+            dbHandler.exportTableToCSV(selectedTable);
+
+            break;
+        }
         case '0': {
             running = false;
             cout << "1. press 1 or everything except 2 if you want to continue the program" << endl;
@@ -306,10 +317,17 @@ void UserInterface::runSimulation(const string& lat, const string& lon, const st
             if (!running) {
                 break;
             }
-                
+
         }
     }
 }
+
+
+
+
+
+
+
 
 
 

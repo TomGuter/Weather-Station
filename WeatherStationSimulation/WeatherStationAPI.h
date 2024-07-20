@@ -3,6 +3,8 @@
 
 #include <string>
 #include <nlohmann/json.hpp>
+#include <iostream>
+#include <curl/curl.h>
 
 using json = nlohmann::json;
 using namespace std;

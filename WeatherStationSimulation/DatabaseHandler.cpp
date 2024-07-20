@@ -71,7 +71,7 @@ void DatabaseHandler::logData(
 }
 
 
-vector<string> DatabaseHandler::getAllTables() {
+vector<string> DatabaseHandler::getAllTables() { 
     vector<string> tables;
     string sql = "SELECT name FROM sqlite_master WHERE type='table';";
     sqlite3_stmt* stmt;

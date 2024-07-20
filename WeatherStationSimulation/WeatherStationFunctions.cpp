@@ -20,7 +20,7 @@ void displayMenu() {
     cout << "7. Calculate Average For Data" << endl;  // New option
     cout << "8. Press 0 To Exit" << endl;
     cout << "Enter your choice: ";
-    cout << endl << "-----------------------" << endl;
+    
 }
 
 

@@ -29,8 +29,8 @@ int main() {
     string apiKey_openWeather = dataS.get_apiKey_openWeather();
     string apiKey_openCageData = dataS.get_apiKey_openCageData();
 
-    DatabaseHandler dbHandler("weather_data.db");
-    Logger logger("weather_data.log");
+    DatabaseHandler dbHandler("weather_database.db");
+    Logger logger("weather_database.log");
 
     userInterface.ApplicationControl(apiKey_openWeather, apiKey_openCageData, dbHandler, logger);
 

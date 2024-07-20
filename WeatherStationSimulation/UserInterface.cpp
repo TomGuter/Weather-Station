@@ -34,6 +34,8 @@ void UserInterface::ApplicationControl(const string& apiKey_openWeather, const s
         displayMenu();
         char choice;
         cin >> choice;
+        cout << endl << "-----------------------" << endl;
+
 
         switch (choice) {
         case '1': {
@@ -187,18 +189,7 @@ void UserInterface::ApplicationControl(const string& apiKey_openWeather, const s
                     cout << "_________________________________________________________" << endl;
                     cout << endl;
                 }
-                //for (const string& header : headers) {
-                //    cout << header << "\t";
-                //}
-                //cout << endl;
 
-                //// Display data rows
-                //for (const auto& row : data) {
-                //    for (const string& value : row) {
-                //        cout << value << "\t";
-                //    }
-                //    cout << endl;
-                //}
             }
 
             break;
@@ -219,7 +210,7 @@ void UserInterface::ApplicationControl(const string& apiKey_openWeather, const s
             cin >> tableToDelete;
             if (dbHandler.tableExists(tableToDelete)) {
                 dbHandler.deleteTable(tableToDelete);
-                cout << tableToDelete << "Deleted... " << endl;
+                cout << tableToDelete << " Deleted... " << endl;
             }
             else {
                 cout << " Syntax error, " << tableToDelete << " doesn't exist... " << endl;

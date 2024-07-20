@@ -63,6 +63,8 @@ Code Structure
 main.cpp: Entry point of the application.
 DatabaseHandler.h/.cpp: Handles database operations.
 Logger.h/.cpp: Handles logging operations.
-WeatherStationAPI.h/.cpp: Interacts with the OpenWeatherMap API.
+WeatherStationAPI.h/.cpp: Interacts with the OpenWeatherMap and Opencage APIs.
 UserInterface.h/.cpp: Manages user interactions and the application menu.
 DataHandlerAbstract.h: Abstract base class for data handlers.
+DataSetting.h/.cpp: Set the Database file name.
+WeatherStationFunctions.h/cpp: A list of functions that UserInterface can use.

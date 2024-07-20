@@ -19,7 +19,7 @@ Clone the repository:
 
 sh
 Copy code
-git clone https://github.com/yourusername/weather-station.git
+git clone https://github.com/yourusername/weather-station-Data.git
 cd weather-station
 Install dependencies:
 Ensure that you have the SQLite, cURL, and nlohmann/json libraries installed. Refer to their respective documentation for installation instructions.

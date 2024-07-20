@@ -109,40 +109,37 @@ void UserInterface::ApplicationControl(const string& apiKey_openWeather, const s
 
                 runSimulation(lat, lon, selectedTable, sleep, apiKey_openWeather, dbHandler, logger, running);
 
-                inputThread.join(); // Wait for user input thread to finish
+                inputThread.join(); // wait for user input thread to finish
             }
             else if (simChoice == 3) {
-                cout << "Enter country: ";
-                // (doesn't work with cout, so i need to use cin.ignore() and getline
+                try {
+                    cout << "Enter country: ";
+                    cin.ignore(); // clear the input buffer 
+                    getline(cin, country); // use getline to handle multi-word input
+                    country = replaceSpacesWithHyphens(country);
 
-                cin.ignore(); // clear the input buffer 
-                getline(cin, country); // use getline to handle multi-word input
-                country = replaceSpacesWithHyphens(country);
+                    cout << "Enter city name: ";
+                    getline(cin, city); // Use getline to handle multi-word input
+                    city = replaceSpacesWithHyphens(city);
 
-                cout << "Enter city name: ";
-                getline(cin, city); // use getline to handle multi-word input
-                city = replaceSpacesWithHyphens(city);
-
-                cout << "Enter logging time in seconds: ";
-                cin >> sleep;
-                while (sleep <= 0) {
-                    cout << "Sleep must be a number greater than 0... " << endl;;
                     cout << "Enter logging time in seconds: ";
                     cin >> sleep;
-                }
 
+                    if (sleep <= 0) {
+                        throw invalid_argument("Sleep must be a number greater than 0.");
+                    }
 
-                json coordinates = getApiData(apiKey_openCageData, city, country, 2);
+                    json coordinates = getApiData(apiKey_openCageData, city, country, 2);
 
-                if (coordinates.is_null() || coordinates["results"].empty()) {
-                    cerr << "Failed to get coordinates for the location: " << city << ", " << country << endl;
-                }
-                else {
+                    if (coordinates.is_null() || coordinates["results"].empty()) {
+                        throw runtime_error("Failed to get coordinates for the location: " + city + ", " + country);
+                    }
+
                     string lat = to_string(coordinates["results"][0]["geometry"]["lat"].get<double>());
                     string lon = to_string(coordinates["results"][0]["geometry"]["lng"].get<double>());
 
-                    cout << lat << endl;
-                    cout << lon << endl;
+                    cout << "Latitude: " << lat << endl;
+                    cout << "Longitude: " << lon << endl;
 
                     running = true;
                     cout << endl << "Simulation is running. Press Enter to stop." << endl;
@@ -150,9 +147,22 @@ void UserInterface::ApplicationControl(const string& apiKey_openWeather, const s
 
                     runSimulation(lat, lon, selectedTable, sleep, apiKey_openWeather, dbHandler, logger, running);
 
-                    inputThread.join(); // Wait for user input thread to finish
+                    inputThread.join(); // wait for user input thread to finish
+                }
+                catch (const invalid_argument& e) {
+                    cerr << "Input Error: " << e.what() << endl;
+                }
+                catch (const runtime_error& e) {
+                    cerr << "Runtime Error: " << e.what() << endl;
+                }
+                catch (const exception& e) {
+                    cerr << "An unexpected error occurred: " << e.what() << endl;
+                }
+                catch (...) {
+                    cerr << "An unknown error occurred." << endl;
                 }
             }
+
             else {
                 cout << "Invalid choice! Please try again." << endl;
             }

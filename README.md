@@ -14,6 +14,23 @@ You will be presented with a menu with the following options:
 - Data fetching: Follow the prompts to enter the country and city names. If you enter a space, it will be replaced with a hyphen to prevent issues.
 - Show logged data: Select a table to display its data. The data will be formatted for readability.
 
+  ## Getting real time data from APIs:
+  ![Alt text](https://github.com/TomGuter/Weather-Station/blob/main/weather_station_screenshots_examples/simulation%20example1%20real%20time%20data.jpg?raw=true)
+
+
+## Choose a table to start sampling real time time to the table until you stop it:
+  ![Alt text](https://github.com/TomGuter/Weather-Station/blob/main/weather_station_screenshots_examples/simulation%20example1%20select%20a%20table%20from%20db.jpg?raw=true)
+
+## Show logged data from a selected table:
+  ![Alt text](https://github.com/TomGuter/Weather-Station/blob/main/weather_station_screenshots_examples/simulation%20example2%20imported%20data%20from%20database.jpg?raw=true)
+
+## Choose a table and a column to calculate statistics
+  ![Alt text](https://github.com/TomGuter/Weather-Station/blob/main/weather_station_screenshots_examples/simulation%20example2%20imported%20data%20from%20database.jpg?raw=true)
+
+## Example of how the data is saved on database (SQLite)
+  ![Alt text](https://github.com/TomGuter/Weather-Station/blob/main/weather_station_screenshots_examples/simulation%20example4%20imported%20table%20as%20csv%20file.jpg?raw=true)
+
+
 
 Features:
 - fetch weather data from the OpenWeatherMap API.

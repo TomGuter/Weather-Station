@@ -2,6 +2,10 @@
 Overview
 This project is a Weather Station application written in C++. It collects weather data from the OpenWeatherMap and OpenCage APIs, logs it into a SQLite database, and provides various functionalities to interact with the data, including displaying, exporting, and calculating averages.
 
+![Alt text](https://github.com/TomGuter/Weather-Station/blob/main/weather_station_screenshots_examples/main%20menu.jpg?raw=true)
+
+
+
 Features:
 - fetch weather data from the OpenWeatherMap API.
 - Log data into a SQLite database.

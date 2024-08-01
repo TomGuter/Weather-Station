@@ -2,8 +2,17 @@
 Overview
 This project is a Weather Station application written in C++. It collects weather data from the OpenWeatherMap and OpenCage APIs, logs it into a SQLite database, and provides various functionalities to interact with the data, including displaying, exporting, and calculating averages.
 
+User Interface:
 ![Alt text](https://github.com/TomGuter/Weather-Station/blob/main/weather_station_screenshots_examples/main%20menu.jpg?raw=true)
 
+## Main menu Features Example:
+You will be presented with a menu with the following options:
+- Fetch weather data: Enter the city and country to fetch weather data from OpenWeatherMap and OpenCage Apis .
+- Show logged data: Select a table to display the logged weather data.
+- Export data to CSV: Select a table and provide a file path to export the data to a CSV file.
+- Calculate statistics: Select a numerical column to calculate the statistics values like average.
+- Data fetching: Follow the prompts to enter the country and city names. If you enter a space, it will be replaced with a hyphen to prevent issues.
+- Show logged data: Select a table to display its data. The data will be formatted for readability.
 
 
 Features:
@@ -35,17 +44,7 @@ Usage:
 - Start the application:
 - Run the compiled binary to start the application.
 
-## Main menu:
-You will be presented with a menu with the following options:
-- Fetch weather data: Enter the city and country to fetch weather data from OpenWeatherMap and OpenCage Apis .
-- Show logged data: Select a table to display the logged weather data.
-- Export data to CSV: Select a table and provide a file path to export the data to a CSV file.
-- Calculate statistics: Select a numerical column to calculate the statistics values like average.
-- Exit: Exit the application.
-Data fetching:
-- Follow the prompts to enter the country and city names. If you enter a space, it will be replaced with a hyphen to prevent issues.
-- Show logged data:
-- Select a table to display its data. The data will be formatted for readability.
+
 
 ## Code Structure:
 1. main.cpp: Entry point of the application.

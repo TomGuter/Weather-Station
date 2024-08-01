@@ -4,62 +4,46 @@ This project is a Weather Station application written in C++. It collects weathe
 
 Features:
 - fetch weather data from the OpenWeatherMap API.
-Log data into a SQLite database.
-Display weather data in a readable format.
-Export data to a CSV file.
-Calculate average values for numerical data columns.
-User-friendly command-line interface.
-Requirements
-C++ compiler (e.g., GCC, Clang, or MSVC)
-SQLite library
-cURL library for API requests
-nlohmann/json library for JSON parsing
-Setup
-Clone the repository:
-
-sh
-Copy code
-git clone https://github.com/yourusername/weather-station-Data.git
-cd weather-station
-Install dependencies:
+- Log data into a SQLite database.
+- Display weather data in a readable format.
+- Export data to a CSV file.
+- Calculate average values for numerical data columns.
+- User-friendly command-line interface.
+- Requirements
+- C++ compiler (e.g., GCC, Clang, or MSVC)
+- SQLite library
+- cURL library for API requests
+- nlohmann/json library for JSON parsing
+  
+## Setup
+Clone the repository: https://github.com/TomGuter/Weather-Station.git
+- Install dependencies:
 Ensure that you have the SQLite, cURL, and nlohmann/json libraries installed. Refer to their respective documentation for installation instructions.
 
-Build the project:
+## Build the project:
 Compile the project using your preferred C++ compiler. Here is an example using g++:
 
-sh
 Copy code
 g++ -o weather_station main.cpp DatabaseHandler.cpp Logger.cpp WeatherStationAPI.cpp UserInterface.cpp -l sqlite3 -l curl -std=c++11
-Run the application:
+Run the application.
 
-sh
-Copy code
-./weather_station
-Usage
-Start the application:
-Run the compiled binary to start the application.
+Usage:
+- Start the application:
+- Run the compiled binary to start the application.
 
-Main menu:
+## Main menu:
 You will be presented with a menu with the following options:
-
-Fetch weather data: Enter the city and country to fetch weather data from OpenWeatherMap.
-Show logged data: Select a table to display the logged weather data.
-Export data to CSV: Select a table and provide a file path to export the data to a CSV file.
-Calculate averages: Select a numerical column to calculate the average value.
-Exit: Exit the application.
+- Fetch weather data: Enter the city and country to fetch weather data from OpenWeatherMap and OpenCage Apis .
+- Show logged data: Select a table to display the logged weather data.
+- Export data to CSV: Select a table and provide a file path to export the data to a CSV file.
+- Calculate statistics: Select a numerical column to calculate the statistics values like average.
+- Exit: Exit the application.
 Data fetching:
-Follow the prompts to enter the country and city names. If you enter a space, it will be replaced with a hyphen to prevent issues.
+- Follow the prompts to enter the country and city names. If you enter a space, it will be replaced with a hyphen to prevent issues.
+- Show logged data:
+- Select a table to display its data. The data will be formatted for readability.
 
-Show logged data:
-Select a table to display its data. The data will be formatted for readability.
-
-Export data to CSV:
-Select a table and provide a file path to save the CSV file. Ensure the path is valid to prevent errors.
-
-Calculate averages:
-Select a table and a numerical column to calculate the average value.
-
-Code Structure:
+## Code Structure:
 1. main.cpp: Entry point of the application.
 2. DatabaseHandler.h/.cpp: Handles database operations.
 3. Logger.h/.cpp: Handles logging operations.

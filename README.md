@@ -10,7 +10,7 @@ You will be presented with a menu with the following options:
 - Fetch weather data: Enter the city and country to fetch weather data from OpenWeatherMap and OpenCage Apis .
 - Show logged data: Select a table to display the logged weather data.
 - Export data to CSV: Select a table and provide a file path to export the data to a CSV file.
-- Calculate statistics: Select a numerical column to calculate the statistics values like average.
+- Calculate Statistics: Compute statistical values for selected tables and columns.
 - Show logged data: Select a table to display its data. The data will be formatted for readability.
 
   ## Getting real time data from APIs:

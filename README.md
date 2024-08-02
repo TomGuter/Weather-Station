@@ -36,6 +36,8 @@ You will be presented with a menu with the following options:
 - SQLite library
 - cURL library for API requests
 - nlohmann/json library for JSON parsing
+- vcpkg: For managing C++ libraries and dependencies.
+- Windows API: For file dialog interactions and other Windows-specific functionalities.
   
 ## Setup
 Clone the repository: https://github.com/TomGuter/Weather-Station.git

@@ -12,6 +12,7 @@ You will be presented with a menu with the following options:
 - Export data to CSV: Select a table and provide a file path to export the data to a CSV file.
 - Calculate Statistics: Compute statistical values for selected tables and columns.
 - Show logged data: Select a table to display its data. The data will be formatted for readability.
+- Delete and create tables to manage your data storage.
 
   ## Getting real time data from APIs:
   ![Alt text](https://github.com/TomGuter/Weather-Station/blob/main/weather_station_screenshots_examples/simulation%20example1%20real%20time%20data.jpg?raw=true)

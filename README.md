@@ -25,7 +25,7 @@ You will be presented with a menu with the following options:
 ![Alt text](https://github.com/TomGuter/Weather-Station/blob/main/weather_station_screenshots_examples/simulation%20example2%20imported%20data%20from%20database.jpg?raw=true)
 
 ## Choose a table and a column to calculate statistics
-  ![Alt text](https://github.com/TomGuter/Weather-Station/blob/main/weather_station_screenshots_examples/simulation%20example2%20imported%20data%20from%20database.jpg?raw=true)
+![Alt text](https://github.com/TomGuter/Weather-Station/blob/main/weather_station_screenshots_examples/simulation%20example2%20imported%20data%20from%20database.jpg?raw=true)
 
 ## Example of how the data is saved on database (SQLite)
 ![Alt text](https://github.com/TomGuter/Weather-Station/blob/main/weather_station_screenshots_examples/simulation%20example4%20imported%20table%20as%20csv%20file.jpg?raw=true)

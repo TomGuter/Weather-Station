@@ -37,7 +37,7 @@ Features:
 - Log data into a SQLite database.
 - Display weather data in a readable format.
 - Export data to a CSV file.
-- Calculate average values for numerical data columns.
+- Calculate statistical values for selected tables and columns.
 - User-friendly command-line interface.
 - Requirements
 - C++ compiler (e.g., GCC, Clang, or MSVC)

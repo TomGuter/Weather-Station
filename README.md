@@ -31,15 +31,7 @@ You will be presented with a menu with the following options:
   ![Alt text](https://github.com/TomGuter/Weather-Station/blob/main/weather_station_screenshots_examples/simulation%20example4%20imported%20table%20as%20csv%20file.jpg?raw=true)
 
 
-
-Features:
-- fetch weather data from the OpenWeatherMap API.
-- Log data into a SQLite database.
-- Display weather data in a readable format.
-- Export data to a CSV file.
-- Calculate statistical values for selected tables and columns.
-- User-friendly command-line interface.
-- Requirements
+# Requirements
 - C++ compiler (e.g., GCC, Clang, or MSVC)
 - SQLite library
 - cURL library for API requests

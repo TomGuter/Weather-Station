@@ -11,7 +11,6 @@ You will be presented with a menu with the following options:
 - Show logged data: Select a table to display the logged weather data.
 - Export data to CSV: Select a table and provide a file path to export the data to a CSV file.
 - Calculate statistics: Select a numerical column to calculate the statistics values like average.
-- Data fetching: Follow the prompts to enter the country and city names. If you enter a space, it will be replaced with a hyphen to prevent issues.
 - Show logged data: Select a table to display its data. The data will be formatted for readability.
 
   ## Getting real time data from APIs:
@@ -52,7 +51,6 @@ Run the application.
 Usage:
 - Start the application:
 - Run the compiled binary to start the application.
-
 
 
 ## Code Structure:
